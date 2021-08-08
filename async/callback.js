@@ -124,8 +124,9 @@ function printWithDelay(print, timeout) {
 
 printWithDelay(() => console.log("async callback"), 2000);
 
-//Callback Hell example
-//
+// Callback Hell example
+// 사용자의 데이터를 back-end에서 받아오는 클래스 작성
+// 아래는 나쁜 back-end의 예시이다.
 class UserStorage {
     loginUser(id, password, onSuccess, onError) {
         setTimeout(() => {
@@ -139,4 +140,50 @@ class UserStorage {
             }
         }, 2000);
     }
+
+    //사용자의 데이터를 받아서, admin or gest라던지의 역할들을 
+    //서버엑 다시 요청해서 받아오는 api
+    getRoles(user, onSuccess, onError){
+        setTimeout(() =>{
+            if(user ==='ellie'){
+                onSuccess({name:'ellie', role:'admin'});
+            }else{
+                onError(new Error('no access'));
+            }
+        },1000);
+    }
 }
+
+
+// const name = prompt('input your name');
+// alert(`hello + ${name}`);
+
+const userStorage = new UserStorage();
+const id = prompt('enter your id');
+const password = prompt('enter your password');
+
+userStorage.loginUser(id, password, 
+    user=>
+{
+userStorage.getRoles(user, (userWithRole)=>
+{
+    alert(`Hello ${userWithRole.name}, you have a ${userWithRole.role} role`)
+},
+error=>
+{
+    console.log(error)
+}
+)
+}
+,
+error=>{
+    console.log(error)
+}
+);
+
+//callback지옥을체험해보면서 느낀점은,
+//정말 읽기가 너무 힘들다. 가독성 저하! 
+//한눈에 가늠하기도어렵고, 비즈니스로직도 너무어렵다.
+//길어길수록, 유지보수 등의 문제점이 생긴다.
+
+
