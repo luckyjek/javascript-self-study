@@ -1,21 +1,13 @@
-function sayHello(nameOfPerson, age) {
-    console.log("Hello my name is " + nameOfPerson + "and I'm" + age);
-}
+//HTML을 가져오는것을 JavaScript에서 하고있다.
+//그리고 JavsScript는 이 HTML element를 가지고 오지만,
+//HTML 자체를 보여주지는 않는다.
+const title = document.getElementById("title");
 
-sayHello("nico", 33);
-sayHello("dal", 22);
-sayHello("lynn", 21);
+//document함수이고, document는 알다시피 HTML을 뜻한다.
+//JavaScript 관점에서의 HTML을 말한다.
+title.innerText = "Got you!";
 
-const player = {
-    name: "elin",
-    sayHello: function (otherPersonsName) {
-        console.log("hello!" + otherPersonsName + "nice to meet you!");
-    },
-};
-
-//나만의 console.log 혹은 array.push와 같은 걸 가지게 되었다.
-//function이 object안에 있을때
-console.log(player.name);
-console.log(player.sayHello("enkyung "));
-player.sayHello("lynn ");
-player.sayHello("nico ");
+//console.dir(title);
+console.log(title);
+console.log(title.id);
+console.log(title.className);
