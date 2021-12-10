@@ -37,7 +37,8 @@ function onButtonClick(event, items) {
     if (key == null || value == null) {
         return; //함수를 끝내겠다.
     }
-
+    // console.log(key);
+    // console.log(value);
     const filtered = items.filter((item) => item[key] === value);
     console.log(filtered);
     displayItems(filtered);
@@ -50,7 +51,7 @@ function setEventListeners(items) {
     buttons.addEventListener("click", (event) => onButtonClick(event, items));
 }
 //main
-loadItems() //items를 받아와서 프로미스가 성공적으로 값을 전달해주면, 전달받은 items를 이용해서
+loadItems() //items를 받아와서 promise가 성공적으로 값을 전달해주면, 전달받은 items를 이용해서
     //html에 items를 보여주고,또 EventListener를 등록해서 버튼을 클릭했을때 적절하게 필터링까지 해주는것까지!
     .then((items) => {
         //console.log(items); //배열 자체만 출력되는것을 볼 수 있다.
