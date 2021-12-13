@@ -37,9 +37,12 @@ function onButtonClick(event, items) {
     if (key == null || value == null) {
         return; //함수를 끝내겠다.
     }
-    // console.log(key);
-    // console.log(value);
+    console.log(key);
+    console.log(value);
+    //아... item 옆에 [0],[1],[2] 말고도, 객체 사용시에 아무타입이나 넣을 수 있나보다.
     const filtered = items.filter((item) => item[key] === value);
+    //item은 data.json으로부터 가져온거고 [key]랑 value는  const로 지정한것!
+    // tshirt 버튼 클릭했을시,item으로 꺼내온거를 다시 사용해서 item의[type]이 === tshirt인것만! filtered에 담는다.
     console.log(filtered);
     displayItems(filtered);
 }
